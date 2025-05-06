@@ -184,13 +184,6 @@ uri = ns.lookup("descargador.youtube")
 
 ---
 
-## 👨‍💻 Autor
-
-**Tu Nombre**  
-GitHub: [@tu_usuario](https://github.com/tu_usuario)
-
----
-
 ## 📄 Licencia
 
 MIT License

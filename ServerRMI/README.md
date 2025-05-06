@@ -127,14 +127,6 @@ Desde aquí podrás:
 
 ---
 
-## 🧑‍💻 Autor
-
-- **Tu Nombre**  
-- GitHub: [@tu_usuario](https://github.com/tu_usuario)  
-- Contacto: tu.email@ejemplo.com
-
----
-
 ## 📄 Licencia
 
 Este proyecto está licenciado bajo la **MIT License**. Consulta el archivo `LICENSE` para más detalles.

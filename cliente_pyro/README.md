@@ -111,14 +111,6 @@ http://localhost:5000
 - Este cliente **no descarga los videos**. Solo envía la solicitud al servidor mediante RMI.
 - La descarga se realiza en el servidor, no en la máquina cliente.
 - Puedes modificar la IP del servidor en ambos scripts (`app.py` y `web_client.py`) según sea necesario.
-
----
-
-## 👨‍💻 Autor
-
-- **Tu Nombre**
-- GitHub: [@tu_usuario](https://github.com/tu_usuario)
-
 ---
 
 ## 📄 Licencia

@@ -91,10 +91,13 @@ python web_client.py
 
 ```
 http://localhost:5000
-```
+---
 
-4. Pega una URL de YouTube y haz clic en **Descargar**.
-5. Verás el resultado en la misma página.
+## ✨ Funcionalidades disponibles
+
+- 🎥 Ingresar una URL de YouTube y solicitar la descarga desde el servidor.
+- 📤 Subir archivos (MP3, PDF, TXT, etc.) al servidor remoto.
+- 📝 Ver mensajes de confirmación del servidor (subida/descarga exitosa o errores).
 
 ---
 

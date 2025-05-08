@@ -69,6 +69,26 @@
             <strong>Resultado:</strong> {{ resultado }}
         </div>
         {% endif %}
+
+
+        <hr style="margin: 2rem 0; border-color: #ddd;">
+
+<h2>Subir archivo al servidor</h2>
+<form action="/subir" method="post" enctype="multipart/form-data">
+    <input type="file" name="archivo" required>
+    <button type="submit">Subir</button>
+</form>
+
+{% with messages = get_flashed_messages() %}
+  {% if messages %}
+    <div class="resultado">
+      {% for message in messages %}
+        <p>{{ message }}</p>
+      {% endfor %}
+    </div>
+  {% endif %}
+{% endwith %}
+
     </div>
 </body>
 </html>

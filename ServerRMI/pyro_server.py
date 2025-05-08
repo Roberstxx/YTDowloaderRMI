@@ -22,6 +22,21 @@ class Descargador:
         except Exception as e:
             return f"Error: {str(e)}"
 
+@Pyro4.expose
+class Descargador:
+    def descargar_video(self, url):
+        # Tu código actual...
+
+    def subir_archivo(self, nombre, contenido_bytes):
+        try:
+            ruta = os.path.join("offline", nombre)
+            with open(ruta, "wb") as f:
+                f.write(contenido_bytes)
+            return f"Archivo '{nombre}' subido correctamente."
+        except Exception as e:
+            return f"Error al subir el archivo: {e}"
+
+
 # Crear el demonio y registrar el objeto
 daemon = Pyro4.Daemon(host="192.168.1.13")  # IP de tu PC (el servidor)
 

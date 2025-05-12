@@ -2,12 +2,10 @@ from flask import Flask, request, render_template, redirect, url_for, flash
 import Pyro4
 
 app = Flask(__name__)
-app.secret_key = "clave_secreta"  # Necesaria para mostrar mensajes flash
-
-Pyro4.config.NS_HOST = "192.168.1.13"  # IP del servidor Pyro
+app.secret_key = "clave_secreta"
 
 def get_descargador():
-    ns = Pyro4.locateNS(host="192.168.1.13")
+    ns = Pyro4.locateNS(host="192.168.1.13")  # IP del servidor
     uri = ns.lookup("descargador.youtube")
     return Pyro4.Proxy(uri)
 
@@ -26,13 +24,9 @@ def index():
 
 @app.route('/subir', methods=['POST'])
 def subir():
-    if 'archivo' not in request.files:
-        flash("No se envió ningún archivo.")
-        return redirect(url_for('index'))
-
-    archivo = request.files['archivo']
-    if archivo.filename == '':
-        flash("Archivo vacío.")
+    archivo = request.files.get('archivo')
+    if not archivo or not archivo.filename:
+        flash("Archivo no válido.")
         return redirect(url_for('index'))
 
     try:
@@ -47,5 +41,6 @@ def subir():
 
 if __name__ == '__main__':
     app.run(debug=True, host='0.0.0.0', port=5002)
+
 
 

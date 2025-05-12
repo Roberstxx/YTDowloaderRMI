@@ -2,15 +2,13 @@ import Pyro4
 
 def main():
     try:
-        # Conéctate al servidor usando la IP del servidor (dispositivo 1)
-        ns = Pyro4.locateNS(host="192.168.1.13")  # Cambia si tu servidor tiene otra IP
-        uri = ns.lookup("youtube.descargador")
+        # IP del servidor donde corre Pyro4 y el NameServer
+        ns = Pyro4.locateNS(host="192.168.1.13")
+        uri = ns.lookup("descargador.youtube")
         descargador = Pyro4.Proxy(uri)
 
-        # Pide al usuario la URL
+        # Entrada del usuario
         url = input("Ingresa la URL del video de YouTube: ")
-        
-        # Llama al método remoto
         resultado = descargador.descargar_video(url)
         print("Respuesta del servidor:", resultado)
 

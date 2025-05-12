@@ -22,11 +22,6 @@ class Descargador:
         except Exception as e:
             return f"Error: {str(e)}"
 
-@Pyro4.expose
-class Descargador:
-    def descargar_video(self, url):
-        # Tu código actual...
-
     def subir_archivo(self, nombre, contenido_bytes):
         try:
             ruta = os.path.join("offline", nombre)
@@ -36,16 +31,15 @@ class Descargador:
         except Exception as e:
             return f"Error al subir el archivo: {e}"
 
+# Iniciar el servidor Pyro
+def main():
+    daemon = Pyro4.Daemon(host="192.168.1.13")  # Cambia a la IP de tu servidor
+    ns = Pyro4.locateNS()  # Se conecta al Name Server
+    uri = daemon.register(Descargador)
+    ns.register("descargador.youtube", uri)  # Nombre que debe usar el cliente
 
-# Crear el demonio y registrar el objeto
-daemon = Pyro4.Daemon(host="192.168.1.13")  # IP de tu PC (el servidor)
+    print("Servidor Pyro corriendo. URI:", uri)
+    daemon.requestLoop()
 
-uri = daemon.register(Descargador)
-print(f"URI del servidor: {uri}")
-
-# Registrar en el nameserver
-ns = Pyro4.locateNS()
-ns.register("descargador.youtube", uri)
-
-print("Servidor Pyro corriendo...")
-daemon.requestLoop()
+if __name__ == "__main__":
+    main()
